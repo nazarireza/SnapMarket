@@ -2,4 +2,10 @@ const colors = {
   background: '#F4F4F4'
 };
 
-export { colors };
+const styles = {
+  text: {
+    fontFamily: 'IRANSansMobile(FaNum)'
+  }
+}
+
+export { colors, styles };
