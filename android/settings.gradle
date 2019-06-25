@@ -1,0 +1,3 @@
+rootProject.name = 'snapp_market'
+
+include ':app'
