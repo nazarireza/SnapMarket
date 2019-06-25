@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
 
 import { colors } from './src/assets/styles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type Props = {};
 
@@ -29,8 +30,6 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: colors.background
   }
 });
