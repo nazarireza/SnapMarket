@@ -38,6 +38,7 @@ class Input extends Component {
 const styles = StyleSheet.create({
   default: {
     ...gstyles.text,
+    paddingVertical: 5
   },
   hPaddingSmall: {
     paddingHorizontal: 5
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15
   },
   small: {
-    fontSize: 12
+    fontSize: 10
   },
   large: {
     fontSize: 24

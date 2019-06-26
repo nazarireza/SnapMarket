@@ -34,16 +34,14 @@ class Home extends Component {
 
     return (
       <Stack style={styles.container}>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={colors.background}
-        />
+        <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
         <AnimatedFlatList
           {...{ data }}
           contentContainerStyle={styles.scrollContainer}
           onScroll={event([{ nativeEvent: { contentOffset: { y: this.y } } }])}
           scrollEventThrottle={16}
           keyExtractor={(item, index) => `${index}`}
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
           renderItem={({ item }) => <FeatureItem {...{ item }} />}
         />
         <Stack animated absolute left right {...{ top }}>
@@ -53,8 +51,11 @@ class Home extends Component {
             paddingLarge
             horizontal
             vCenterItems>
-            {/* <Picture source={logoType} style={styles.logo}/> */}
-            <Stack highlight style={styles.logo} />
+            <Picture
+              source={logoType}
+              style={styles.logo}
+            />
+            {/* <Stack highlight style={styles.logo} /> */}
             <Stack flex={1} hEndItems>
               <Icon name="menu" medium />
             </Stack>
@@ -79,13 +80,15 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 150,
-    height: 30
+    height: 30,
+    resizeMode: 'contain',
   },
   searchContainer: {
     backgroundColor: colors.gray1
   },
   scrollContainer: {
-    paddingTop: Header.HEIGHT * 2
+    //NOTE: Header + Search bar + Content padding
+    paddingTop: Header.HEIGHT * 2 + 10
   }
 });
 

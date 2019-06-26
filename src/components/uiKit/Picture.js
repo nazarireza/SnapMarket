@@ -3,12 +3,16 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 class Picture extends Component {
   render() {
-    const { style } = this.props;
+    const { style, fill, aspectRatio } = this.props;
 
     return (
       <Image
-        // resizeMode="contain"
-        style={[styles.default, style]}
+        style={[
+          styles.default,
+          style,
+          fill && styles.fill,
+          aspectRatio && { aspectRatio }
+        ]}
         {...this.props}
       />
     );
@@ -16,10 +20,8 @@ class Picture extends Component {
 }
 
 const styles = StyleSheet.create({
-  default: {
-    width: '100%',
-    aspectRatio: 2.23
-  }
+  default: {},
+  fill: {}
 });
 
 export default Picture;

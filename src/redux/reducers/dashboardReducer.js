@@ -18,7 +18,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         getDashboardWorkerIsBusy: false,
-        dashboardData: [...action.payload]
+        dashboardData: [
+          ...action.payload.filter(p => p.type === 'CAMPAIGN_BANNER')
+        ]
       };
     case GET_DASHBOARD_FAILED:
       return {
