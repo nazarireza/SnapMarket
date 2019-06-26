@@ -8,7 +8,6 @@ const MEDIUM_HEIGHT = 175,
 
 const SmallPicture = ({ image }) => (
   <Picture
-    fill
     aspectRatio={4.01}
     resizeMode="stretch"
     source={{ uri: image }}
@@ -17,7 +16,6 @@ const SmallPicture = ({ image }) => (
 
 const MediumPicture = ({ image }) => (
   <Picture
-    fill
     aspectRatio={2.23}
     resizeMode="stretch"
     source={{ uri: image }}

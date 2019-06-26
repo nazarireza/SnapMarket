@@ -15,19 +15,25 @@ const PAGE_MARGIN = 40,
   HEIGHT = 140;
 
 class BannerListFeature extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+
     const {
       item: { banners }
     } = this.props;
 
+    this.data = banners.reverse();
+  }
+
+  render() {
     return (
       <FlatList
-        data={banners.reverse()}
+        data={this.data}
         style={styles.container}
         contentContainerStyle={styles.containerPadding}
         showsHorizontalScrollIndicator={false}
         horizontal
-        initialScrollIndex={banners.length - 1}
+        initialScrollIndex={this.data.length - 1}
         keyExtractor={(item, index) => `${index}`}
         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         renderItem={({ item }) => (

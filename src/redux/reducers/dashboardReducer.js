@@ -19,7 +19,11 @@ export default (state = initialState, action) => {
         ...state,
         getDashboardWorkerIsBusy: false,
         dashboardData: [
-          ...action.payload.filter(p => p.type === 'CAMPAIGN_BANNER')
+          ...action.payload.filter(
+            p =>
+              p.type === 'CAMPAIGN_BANNER' ||
+              p.type === 'CATEGORY_LIST_VERTICAL'
+          )
         ]
       };
     case GET_DASHBOARD_FAILED:

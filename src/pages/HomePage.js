@@ -8,7 +8,7 @@ const { Value, min, max, multiply, event } = Animated;
 
 import { colors } from '../assets/styles';
 import { getDashboardData } from '../redux/actions/dashboardAction';
-import { Stack, Picture, Icon, Input } from '../components/uiKit';
+import { Stack, Picture, Icon, Input, Space } from '../components/uiKit';
 import FeatureItem from '../components/FeatureItem';
 
 const logoType = require('../assets/images/logo_type.png');
@@ -41,7 +41,7 @@ class Home extends Component {
           onScroll={event([{ nativeEvent: { contentOffset: { y: this.y } } }])}
           scrollEventThrottle={16}
           keyExtractor={(item, index) => `${index}`}
-          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+          ItemSeparatorComponent={() => <Space small />}
           renderItem={({ item }) => <FeatureItem {...{ item }} />}
         />
         <Stack animated absolute left right {...{ top }}>
@@ -62,7 +62,7 @@ class Home extends Component {
           </Stack>
           <Stack white hPaddingMedium paddingSmall borderLight splitterBorder>
             <Stack round style={styles.searchContainer}>
-              <Input placeholder="دنبال چی می گردی؟" small hPaddingLarge />
+              <Input placeholder="دنبال چی می گردی؟" medium hPaddingLarge />
             </Stack>
           </Stack>
         </Stack>

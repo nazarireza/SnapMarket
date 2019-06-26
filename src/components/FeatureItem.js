@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import BannerFeature from './BannerFeature';
 import BannerListFeature from './BannerListFeature';
+import CategoryListFeature from './CategoryListFeature';
 
 export default ({ item }) => {
   switch (item.type) {
@@ -19,6 +20,8 @@ export default ({ item }) => {
         default:
           return <View />;
       }
+    case 'CATEGORY_LIST_VERTICAL':
+      return <CategoryListFeature {...{ item }} />;
     default:
       //   throw new Error('Not Supported');
       return <View />;
