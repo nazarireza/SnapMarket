@@ -10,9 +10,14 @@ class Banner extends Component {
     } = this.props;
 
     return (
-      <Stack hPaddingMedium>
+      <Stack hPaddingMedium style={styles.container}>
         <Stack radius={10} clip>
-          <Picture fill aspectRatio={2.23} source={{ uri: banners[0].image }} />
+          <Picture
+            fill
+            aspectRatio={2.22}
+            resizeMode="stretch"
+            source={{ uri: banners[0].image }}
+          />
         </Stack>
       </Stack>
     );
@@ -20,7 +25,7 @@ class Banner extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {}
+  container: { flex: 1, height: 175 }
 });
 
 export default Banner;

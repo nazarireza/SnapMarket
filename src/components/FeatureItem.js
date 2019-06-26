@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import BannerFeature from './BannerFeature';
+import BannerListFeature from './BannerListFeature';
 
 export default ({ item }) => {
   switch (item.type) {
     case 'CAMPAIGN_BANNER':
       switch (item.size) {
         case 'MEDIUM':
-          return <BannerFeature {...{ item }} />;
+          return item.banners.length > 1 ? (
+            <BannerListFeature {...{ item }} />
+          ) : (
+            <BannerFeature {...{ item }} />
+          );
         default:
           return <View />;
       }
