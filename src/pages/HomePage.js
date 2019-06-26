@@ -1,22 +1,43 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { connect } from 'react-redux';
 
-class Home extends Component{
-    render(){
-        return(
-            <View style={styles.container}>
-                <Text>Home</Text>
-            </View>
-        )
-    }
+import { colors } from '../assets/styles';
+import { getDashboardData } from '../redux/actions/dashboardAction';
+
+class Home extends Component {
+
+  componentDidMount(){
+    this.props.getDashboardData();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={colors.background}
+        />
+        <Text>Home</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
 
-export default Home;
+const mapStateToProps = state => ({
+  dashboard: state.dashboard
+});
+
+export default connect(
+  mapStateToProps,
+  { getDashboardData }
+)(Home);
