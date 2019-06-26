@@ -12,8 +12,10 @@ export default ({ item }) => {
           return item.banners.length > 1 ? (
             <BannerListFeature {...{ item }} />
           ) : (
-            <BannerFeature {...{ item }} />
+            <BannerFeature {...{ item }} medium />
           );
+        case 'SMALL':
+          return <BannerFeature {...{ item }} small />;
         default:
           return <View />;
       }
