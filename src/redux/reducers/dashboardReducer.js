@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         getDashboardWorkerIsBusy: false,
-        dashboardData: action.payload
+        dashboardData: [...action.payload]
       };
     case GET_DASHBOARD_FAILED:
       return {
