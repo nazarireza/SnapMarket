@@ -7,29 +7,37 @@ class Label extends Component {
   render() {
     const {
       bold,
+      xSmall,
       small,
       large,
       xLarge,
       children,
       style,
+      colorPrimary,
       colorDark,
       colorNormal,
       colorLight,
-      white
+      white,
+      decoration,
+      line
     } = this.props;
 
     return (
       <Text
+        numberOfLines={line}
         style={[
           styles.default,
           bold && styles.bold,
+          xSmall && styles.xSmall,
           small && styles.small,
           large && styles.large,
           xLarge && styles.xLarge,
+          colorPrimary && styles.colorPrimary,
           colorDark && styles.colorDark,
           colorNormal && styles.colorNormal,
           colorLight && styles.colorLight,
           white && styles.white,
+          decoration && styles.decoration,
           style && style
         ]}>
         {children}
@@ -46,6 +54,9 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold'
   },
+  xSmall: {
+    fontSize: 10
+  },
   small: {
     fontSize: 12
   },
@@ -54,6 +65,9 @@ const styles = StyleSheet.create({
   },
   xLarge: {
     fontSize: 48
+  },
+  colorPrimary: {
+    color: colors.primary
   },
   colorDark: {
     color: '#3D3D3D'
@@ -66,6 +80,10 @@ const styles = StyleSheet.create({
   },
   white: {
     color: 'white'
+  },
+  decoration: {
+    textDecorationStyle: 'solid',
+    textDecorationLine: 'line-through'
   }
 });
 

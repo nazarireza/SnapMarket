@@ -4,6 +4,8 @@ import { View } from 'react-native';
 import BannerFeature from './BannerFeature';
 import BannerListFeature from './BannerListFeature';
 import CategoryListFeature from './CategoryListFeature';
+import ProductListFeature from './ProductListFeature';
+import ProductListWithTimerFeature from './ProductListWithTimerFeature';
 
 export default ({ item }) => {
   switch (item.type) {
@@ -22,8 +24,11 @@ export default ({ item }) => {
       }
     case 'CATEGORY_LIST_VERTICAL':
       return <CategoryListFeature {...{ item }} />;
+    case 'ORDERED_LIST':
+      return <ProductListFeature {...{ item }} />;
+      case 'TIMER_HORIZONTAL':
+      return <ProductListWithTimerFeature {...{ item }} />;
     default:
-      //   throw new Error('Not Supported');
       return <View />;
   }
 };

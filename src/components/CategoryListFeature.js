@@ -20,7 +20,7 @@ const CategoryItem = ({ image, title }) => (
       <Label medium>{title}</Label>
     </Stack>
     <Space small />
-    <Stack circle={45} clip>
+    <Stack square={45} clip>
       <Picture fill source={{ uri: image }} />
     </Stack>
   </Stack>
@@ -52,9 +52,10 @@ class CategoryListFeature extends Component {
     return (
       <Stack>
         <Stack horizontal vCenterItems hPaddingLarge>
-          <Stack flex={1} hPaddingMedium>
+          <Stack flex={1}>
             <Label>{title}</Label>
           </Stack>
+          <Space small />
           <Icon name="grid" medium />
         </Stack>
         <Space small />
@@ -94,7 +95,6 @@ const styles = StyleSheet.create({
   },
   banner: {
     width: dimension.width - PAGE_MARGIN * 2
-    // height: HEIGHT
   }
 });
 

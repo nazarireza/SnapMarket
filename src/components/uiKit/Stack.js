@@ -27,18 +27,23 @@ class Stack extends Component {
       radius,
       round,
       circle,
+      square,
       paddingSmall,
       paddingMedium,
       paddingLarge,
       hPaddingSmall,
       hPaddingMedium,
       hPaddingLarge,
+      vPaddingSmall,
+      vPaddingMedium,
+      vPaddingLarge,
       borderLight,
       borderNormal,
       borderDark,
       border,
       splitterBorder,
-      animated
+      animated,
+      color
     } = this.props;
 
     const Container = props =>
@@ -72,18 +77,23 @@ class Stack extends Component {
           round && styles.round,
           circle && styles.circle,
           circle && { width: circle, height: circle },
-          !circle && paddingSmall && styles.paddingSmall,
-          !circle && paddingMedium && styles.paddingMedium,
-          !circle && paddingLarge && styles.paddingLarge,
-          !circle && hPaddingSmall && styles.hPaddingSmall,
-          !circle && hPaddingMedium && styles.hPaddingMedium,
-          !circle && hPaddingLarge && styles.hPaddingLarge,
+          square && { width: square, height: square },
+          !circle && !square && paddingSmall && styles.paddingSmall,
+          !circle && !square && paddingMedium && styles.paddingMedium,
+          !circle && !square && paddingLarge && styles.paddingLarge,
+          !circle && !square && hPaddingSmall && styles.hPaddingSmall,
+          !circle && !square && hPaddingMedium && styles.hPaddingMedium,
+          !circle && !square && hPaddingLarge && styles.hPaddingLarge,
+          !circle && !square && vPaddingSmall && styles.vPaddingSmall,
+          !circle && !square && vPaddingMedium && styles.vPaddingMedium,
+          !circle && !square && vPaddingLarge && styles.vPaddingLarge,
           borderLight && styles.borderLight,
           borderNormal && styles.borderNormal,
           borderDark && styles.borderDark,
           (borderLight || borderNormal || borderDark) &&
             (splitterBorder ? { borderBottomWidth: 1 } : { borderWidth: 1 }),
           border && { borderWidth: border },
+          color && {backgroundColor: color},
           style && style
         ]}>
         {children}
@@ -169,6 +179,15 @@ const styles = StyleSheet.create({
   },
   hPaddingLarge: {
     paddingHorizontal: 15
+  },
+  vPaddingSmall: {
+    paddingVertical: 5
+  },
+  vPaddingMedium: {
+    paddingVertical: 10
+  },
+  vPaddingLarge: {
+    paddingVertical: 15
   },
   borderLight: {
     borderColor: '#D2D2D2'
