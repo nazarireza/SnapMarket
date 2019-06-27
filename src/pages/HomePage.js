@@ -5,7 +5,8 @@ import {
   StyleSheet,
   StatusBar,
   FlatList,
-  Platform
+  Platform,
+  ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Header } from 'react-navigation';
@@ -36,16 +37,13 @@ class Home extends Component {
 
   render() {
     const {
-      dashboard: { dashboardData: data }
+      dashboard: { dashboardData: data, getDashboardWorkerIsBusy: isBusy }
     } = this.props;
 
-    let top = min(
-      0,
-      max(multiply(-1, this.y), -(Header.HEIGHT))
-    );
+    let top = min(0, max(multiply(-1, this.y), -Header.HEIGHT));
 
     return (
-      <Stack style={styles.container}>
+      <Stack flex={1} style={styles.container}>
         <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
         <AnimatedFlatList
           {...{ data }}
@@ -75,6 +73,11 @@ class Home extends Component {
             </Stack>
           </Stack>
         </Stack>
+        {isBusy && (
+          <Stack absolute fill centerItems>
+            <ActivityIndicator />
+          </Stack>
+        )}
       </Stack>
     );
   }

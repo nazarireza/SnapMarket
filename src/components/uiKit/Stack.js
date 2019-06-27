@@ -63,12 +63,12 @@ class Stack extends Component {
             (horizontal ? styles.hCenterItems : styles.vCenterItems),
           vEndItems && (horizontal ? styles.hEndItems : styles.vEndItems),
           hEndItems && (horizontal ? styles.vEndItems : styles.hEndItems),
-          absolute && fill && styles.fill,
           absolute && left && styles.left,
           absolute && right && styles.right,
           absolute && top && styles.top,
           absolute && top !== true && { top },
           absolute && bottom && styles.bottom,
+          absolute && fill && styles.fill,
           white && styles.white,
           highlight && styles.highlight,
           clip && styles.clip,
@@ -93,7 +93,7 @@ class Stack extends Component {
           (borderLight || borderNormal || borderDark) &&
             (splitterBorder ? { borderBottomWidth: 1 } : { borderWidth: 1 }),
           border && { borderWidth: border },
-          color && {backgroundColor: color},
+          color && { backgroundColor: color },
           style && style
         ]}>
         {children}
@@ -127,9 +127,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   fill: {
+    top: 0,
     left: 0,
     right: 0,
-    top: 0,
     bottom: 0
   },
   left: {
