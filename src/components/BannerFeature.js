@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
 import { Picture, Stack } from './uiKit';
@@ -17,7 +17,7 @@ const MediumPicture = ({ image }) => (
   <Picture style={{ height: MEDIUM_HEIGHT }} fill source={{ uri: image }} />
 );
 
-class Banner extends Component {
+class Banner extends PureComponent {
   render() {
     const {
       item: {

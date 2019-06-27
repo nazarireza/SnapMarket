@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -26,7 +26,7 @@ const CategoryItem = ({ image, title }) => (
   </Stack>
 );
 
-class CategoryListFeature extends Component {
+class CategoryListFeature extends PureComponent {
   constructor(props) {
     super(props);
 

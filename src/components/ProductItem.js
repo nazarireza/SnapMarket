@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { Picture, Stack, Space, Label, Icon } from './uiKit';
@@ -6,10 +6,15 @@ import { Picture, Stack, Space, Label, Icon } from './uiKit';
 const HEIGHT = 185,
   CARD_WIDTH = 120;
 
-class ProductItem extends Component {
+class ProductItem extends PureComponent {
   render() {
     const {
-      item: { images: [{ imageSrc: image } = {}] = [], title, price, discount }
+      item: {
+        images: [{ imageThumbnailSrc: image } = {}] = [],
+        title,
+        price,
+        discount
+      }
     } = this.props;
 
     return (

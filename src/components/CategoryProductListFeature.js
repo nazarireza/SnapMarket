@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
 import { Picture, Stack, Space, Label, Icon } from './uiKit';
 import ProductItem from './ProductItem';
 
-class CategoryProductListFeature extends Component {
+class CategoryProductListFeature extends PureComponent {
   render() {
     const {
       item: {

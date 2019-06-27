@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -15,7 +15,7 @@ const dimension = Dimensions.get('window');
 const PAGE_MARGIN = 40,
   HEIGHT = 150;
 
-class BannerListFeature extends Component {
+class BannerListFeature extends PureComponent {
   render() {
     const {
       item: { banners }

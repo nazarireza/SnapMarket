@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -26,7 +26,7 @@ import { colors } from '../assets/styles';
 
 const SPACE_WIDTH = 150;
 
-class ProductListWithTimerFeature extends Component {
+class ProductListWithTimerFeature extends PureComponent {
   constructor(props) {
     super(props);
 
