@@ -6,20 +6,20 @@ import { Picture, Stack } from './uiKit';
 const dimensions = Dimensions.get('window');
 
 const MEDIUM_HEIGHT = 175,
-  SMALL_HEIGHT = 100;
+  SMALL_HEIGHT = 80;
 
 const SmallPicture = ({ image }) => (
   <Picture
+    style={{ height: SMALL_HEIGHT }}
     fill
-    resizeMode="stretch"
     source={{ uri: image }}
   />
 );
 
 const MediumPicture = ({ image }) => (
   <Picture
+    style={{ height: MEDIUM_HEIGHT }}
     fill
-    resizeMode="stretch"
     source={{ uri: image }}
   />
 );
@@ -35,17 +35,8 @@ class Banner extends Component {
     } = this.props;
 
     return (
-      <Stack
-        hPaddingMedium
-        style={[styles.container]}>
-        <Stack
-          colorLight
-          radius={10}
-          clip
-          style={[
-            small && { height: SMALL_HEIGHT },
-            medium && { height: MEDIUM_HEIGHT }
-          ]}>
+      <Stack hPaddingMedium style={[styles.container]}>
+        <Stack colorMedium radius={10} clip>
           {small && <SmallPicture image={banner.image} />}
           {medium && <MediumPicture image={banner.image} />}
         </Stack>

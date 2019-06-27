@@ -91,9 +91,8 @@ const styles = StyleSheet.create({
     height: Header.HEIGHT
   },
   logo: {
-    width: 150,
-    height: 30,
-    resizeMode: 'contain'
+    width: 129,
+    height: 17,
   },
   searchContainer: {
     backgroundColor: colors.gray1,
