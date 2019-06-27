@@ -31,7 +31,7 @@ class BannerListFeature extends Component {
         keyExtractor={(item, index) => `${index}`}
         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         renderItem={({ item }) => (
-          <Stack radius={10} clip style={styles.banner}>
+          <Stack radius={10} clip style={styles.banner} colorLight>
             <Picture fill resizeMode="stretch" source={{ uri: item.image }} />
           </Stack>
         )}

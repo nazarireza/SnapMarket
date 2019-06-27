@@ -10,11 +10,15 @@ import { colors, gstyles } from '../assets/styles';
 import { TabBarIcon } from '../components/uiKit';
 
 import Home from '../pages/HomePage';
+import ShoppingList from '../pages/ShoppingListPage';
+import Search from '../pages/SearchPage';
+import Categories from '../pages/CategoriesPage';
+import Basket from '../pages/BasketPage';
 
 const dashboardNavigator = createBottomTabNavigator(
   {
-    Basket: {
-      screen: Home,
+    _Basket: {
+      screen: Basket,
       navigationOptions: {
         title: 'سبد خرید',
         tabBarIcon: ({ tintColor: color }) => (
@@ -23,7 +27,7 @@ const dashboardNavigator = createBottomTabNavigator(
       }
     },
     Categories: {
-      screen: Home,
+      screen: Categories,
       navigationOptions: {
         title: 'دسته بندی',
         tabBarIcon: ({ tintColor: color }) => (
@@ -32,7 +36,7 @@ const dashboardNavigator = createBottomTabNavigator(
       }
     },
     Search: {
-      screen: Home,
+      screen: Search,
       navigationOptions: {
         title: 'جستجو',
         tabBarIcon: ({ tintColor: color }) => (
@@ -40,8 +44,8 @@ const dashboardNavigator = createBottomTabNavigator(
         )
       }
     },
-    ShoppingList: {
-      screen: Home,
+    _ShoppingList: {
+      screen: ShoppingList,
       navigationOptions: {
         title: 'لیست خرید',
         tabBarIcon: ({ tintColor: color }) => (
@@ -51,10 +55,10 @@ const dashboardNavigator = createBottomTabNavigator(
     },
     Home: {
       screen: Home,
-      navigationOptions: {
+      navigationOptions: navigation => ({
         title: 'ویترین',
         tabBarIcon: ({ tintColor: color }) => <TabBarIcon home {...{ color }} />
-      }
+      })
     }
   },
   {
@@ -62,11 +66,45 @@ const dashboardNavigator = createBottomTabNavigator(
     defaultNavigationOptions: {
       tabBarOptions: {
         labelStyle: {
-          ...gstyles.text
+          ...gstyles.text,
+          textAlign: 'center'
+        }
+      },
+      tabBarOnPress: ({ navigation, defaultHandler }) => {
+        const {
+          isFocused,
+          state: { routeName },
+          goBack,
+          navigate
+        } = navigation;
+        if (routeName.startsWith('_')) {
+          navigate(routeName.slice(1));
+        } else {
+          defaultHandler();
         }
       }
     }
   }
 );
 
-export default createAppContainer(dashboardNavigator);
+const rootNavigator = createStackNavigator(
+  {
+    Basket: {
+      screen: Basket
+    },
+    ShoppingList: {
+      screen: ShoppingList
+    },
+    Dashboard: {
+      screen: dashboardNavigator,
+      navigationOptions: {
+        header: null
+      }
+    }
+  },
+  {
+    initialRouteName: 'Dashboard'
+  }
+);
+
+export default createAppContainer(rootNavigator);

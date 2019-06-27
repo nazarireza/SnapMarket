@@ -9,7 +9,8 @@ const colors = {
 
 const gstyles = {
   text: {
-    fontFamily: 'IRANSansMobile(FaNum)'
+    fontFamily: 'IRANSansMobile(FaNum)',
+    textAlign: 'right'
   }
 };
 

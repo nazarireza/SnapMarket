@@ -39,7 +39,7 @@ class Banner extends Component {
         hPaddingMedium
         style={[styles.container]}>
         <Stack
-          highlight
+          colorLight
           radius={10}
           clip
           style={[

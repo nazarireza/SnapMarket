@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, FlatList } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  FlatList,
+  Platform
+} from 'react-native';
 import { connect } from 'react-redux';
 import { Header } from 'react-navigation';
-import Animated, { Easing } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
-const { Value, min, max, multiply, event } = Animated;
+const { Value, min, max, multiply, event, createAnimatedComponent } = Animated;
 
 import { colors } from '../assets/styles';
 import { getDashboardData } from '../redux/actions/dashboardAction';
@@ -12,7 +19,9 @@ import { Stack, Picture, Icon, Input, Space } from '../components/uiKit';
 import FeatureItem from '../components/FeatureItem';
 
 const logoType = require('../assets/images/logo_type.png');
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+const AnimatedFlatList = createAnimatedComponent(FlatList);
+
+const SEARCH_BAR_HEIGHT = 30;
 
 class Home extends Component {
   constructor(props) {
@@ -30,7 +39,10 @@ class Home extends Component {
       dashboard: { dashboardData: data }
     } = this.props;
 
-    let top = min(0, max(multiply(-1, this.y), -Header.HEIGHT));
+    let top = min(
+      0,
+      max(multiply(-1, this.y), -(Header.HEIGHT))
+    );
 
     return (
       <Stack style={styles.container}>
@@ -40,7 +52,7 @@ class Home extends Component {
           contentContainerStyle={styles.scrollContainer}
           onScroll={event([{ nativeEvent: { contentOffset: { y: this.y } } }])}
           scrollEventThrottle={16}
-          keyExtractor={({type}, index) => `${type}_${index}`}
+          keyExtractor={({ type }, index) => `${type}_${index}`}
           ItemSeparatorComponent={() => <Space small />}
           renderItem={({ item }) => <FeatureItem {...{ item }} />}
         />
@@ -51,10 +63,7 @@ class Home extends Component {
             paddingLarge
             horizontal
             vCenterItems>
-            <Picture
-              source={logoType}
-              style={styles.logo}
-            />
+            <Picture source={logoType} style={styles.logo} />
             {/* <Stack highlight style={styles.logo} /> */}
             <Stack flex={1} hEndItems>
               <Icon name="menu" medium />
@@ -81,14 +90,16 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 30,
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   },
   searchContainer: {
-    backgroundColor: colors.gray1
+    backgroundColor: colors.gray1,
+    height: SEARCH_BAR_HEIGHT
   },
   scrollContainer: {
     //NOTE: Header + Search bar + Content padding
-    paddingTop: Header.HEIGHT * 2 + 10
+    paddingTop: Header.HEIGHT + SEARCH_BAR_HEIGHT + 20,
+    paddingBottom: 30
   }
 });
 
