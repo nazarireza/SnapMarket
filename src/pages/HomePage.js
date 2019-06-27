@@ -40,7 +40,7 @@ class Home extends Component {
           contentContainerStyle={styles.scrollContainer}
           onScroll={event([{ nativeEvent: { contentOffset: { y: this.y } } }])}
           scrollEventThrottle={16}
-          keyExtractor={(item, index) => `${index}`}
+          keyExtractor={({type}, index) => `${type}_${index}`}
           ItemSeparatorComponent={() => <Space small />}
           renderItem={({ item }) => <FeatureItem {...{ item }} />}
         />

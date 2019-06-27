@@ -15,19 +15,9 @@ import { colors } from '../assets/styles';
 const SPACE_WIDTH = 150;
 
 class ProductListWithTimerFeature extends Component {
-  constructor(props) {
-    super(props);
-
-    const {
-      item: { products }
-    } = this.props;
-
-    this.data = products.reverse();
-  }
-
   render() {
     const {
-      item: { title }
+      item: { title, products }
     } = this.props;
 
     return (
@@ -40,11 +30,11 @@ class ProductListWithTimerFeature extends Component {
           </Stack>
         </Stack>
         <FlatList
-          data={this.data}
+          data={products}
           contentContainerStyle={styles.containerPadding}
           showsHorizontalScrollIndicator={false}
           horizontal
-          initialScrollIndex={this.data.length - 1}
+          inverted
           keyExtractor={(item, index) => `${index}`}
           ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
           renderItem={({ item }) => <ProductItem {...{ item }} />}
@@ -57,7 +47,7 @@ class ProductListWithTimerFeature extends Component {
 const styles = StyleSheet.create({
   containerPadding: {
     paddingHorizontal: 10,
-    paddingEnd: SPACE_WIDTH
+    paddingStart: SPACE_WIDTH
   }
 });
 

@@ -26,7 +26,7 @@ export default ({ item }) => {
       return <CategoryListFeature {...{ item }} />;
     case 'ORDERED_LIST':
       return <ProductListFeature {...{ item }} />;
-      case 'TIMER_HORIZONTAL':
+    case 'TIMER_HORIZONTAL':
       return <ProductListWithTimerFeature {...{ item }} />;
     default:
       return <View />;

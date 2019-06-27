@@ -40,8 +40,7 @@ class CategoryListFeature extends Component {
         return index % 2 === 0
           ? [...result, [current, array[index + 1]]]
           : result;
-      }, [])
-      .reverse();
+      }, []);
   }
 
   render() {
@@ -65,7 +64,7 @@ class CategoryListFeature extends Component {
           contentContainerStyle={styles.containerPadding}
           showsHorizontalScrollIndicator={false}
           horizontal
-          initialScrollIndex={this.data.length - 1}
+          inverted
           keyExtractor={(item, index) => `${index}`}
           ItemSeparatorComponent={() => <Space small />}
           renderItem={({

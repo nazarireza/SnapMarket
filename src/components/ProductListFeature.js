@@ -12,22 +12,10 @@ import { Picture, Stack, Space, Label, Icon } from './uiKit';
 import ProductItem from './ProductItem';
 
 class ProductListFeature extends Component {
-  constructor(props) {
-    super(props);
-
-    const {
-      item: {
-        banners: { products }
-      }
-    } = this.props;
-
-    this.data = products.reverse();
-  }
-
   render() {
     const {
       item: {
-        banners: { title }
+        banners: { title, products }
       }
     } = this.props;
 
@@ -45,11 +33,11 @@ class ProductListFeature extends Component {
         </Stack>
         <Space small />
         <FlatList
-          data={this.data}
+          data={products}
           contentContainerStyle={styles.containerPadding}
           showsHorizontalScrollIndicator={false}
           horizontal
-          initialScrollIndex={this.data.length - 1}
+          inverted
           keyExtractor={(item, index) => `${index}`}
           ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
           renderItem={({ item }) => <ProductItem {...{ item }} />}

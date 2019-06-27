@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
 import { Picture, Stack } from './uiKit';
 
+const dimensions = Dimensions.get('window');
+
 const MEDIUM_HEIGHT = 175,
-  SMALL_HEIGHT = 120;
+  SMALL_HEIGHT = 100;
 
 const SmallPicture = ({ image }) => (
   <Picture
-    aspectRatio={4.01}
+    fill
     resizeMode="stretch"
     source={{ uri: image }}
   />
@@ -16,7 +18,7 @@ const SmallPicture = ({ image }) => (
 
 const MediumPicture = ({ image }) => (
   <Picture
-    aspectRatio={2.23}
+    fill
     resizeMode="stretch"
     source={{ uri: image }}
   />
@@ -35,12 +37,15 @@ class Banner extends Component {
     return (
       <Stack
         hPaddingMedium
-        style={[
-          styles.container,
-          small && { height: SMALL_HEIGHT },
-          medium && { height: MEDIUM_HEIGHT }
-        ]}>
-        <Stack radius={10} clip>
+        style={[styles.container]}>
+        <Stack
+          highlight
+          radius={10}
+          clip
+          style={[
+            small && { height: SMALL_HEIGHT },
+            medium && { height: MEDIUM_HEIGHT }
+          ]}>
           {small && <SmallPicture image={banner.image} />}
           {medium && <MediumPicture image={banner.image} />}
         </Stack>
@@ -50,7 +55,7 @@ class Banner extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 }
+  container: { width: dimensions.width }
 });
 
 export default Banner;
