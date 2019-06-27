@@ -9,12 +9,7 @@ const HEIGHT = 185,
 class ProductItem extends Component {
   render() {
     const {
-      item: {
-        images: [{ imageSrc: image }],
-        title,
-        price,
-        discount
-      }
+      item: { images: [{ imageSrc: image } = {}] = [], title, price, discount }
     } = this.props;
 
     return (
@@ -36,17 +31,19 @@ class ProductItem extends Component {
             {Math.floor(price - discount)}
           </Label>
         </Stack>
-        <Label small line={3}>{title}</Label>
+        <Label small line={3}>
+          {title}
+        </Label>
       </Stack>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    card: {
-      width: CARD_WIDTH,
-      height: HEIGHT
-    }
-  });
+  card: {
+    width: CARD_WIDTH,
+    height: HEIGHT
+  }
+});
 
 export default ProductItem;

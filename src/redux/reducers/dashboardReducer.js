@@ -24,7 +24,8 @@ export default (state = initialState, action) => {
               p.type === 'CAMPAIGN_BANNER' ||
               p.type === 'CATEGORY_LIST_VERTICAL' ||
               p.type === 'ORDERED_LIST' ||
-              p.type === 'TIMER_HORIZONTAL'
+              p.type === 'TIMER_HORIZONTAL' ||
+              p.type === 'PRODUCT'
           )
         ]
       };

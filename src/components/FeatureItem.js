@@ -5,6 +5,7 @@ import BannerFeature from './BannerFeature';
 import BannerListFeature from './BannerListFeature';
 import CategoryListFeature from './CategoryListFeature';
 import ProductListFeature from './ProductListFeature';
+import CategoryProductListFeature from './CategoryProductListFeature';
 import ProductListWithTimerFeature from './ProductListWithTimerFeature';
 
 export default ({ item }) => {
@@ -24,6 +25,8 @@ export default ({ item }) => {
       }
     case 'CATEGORY_LIST_VERTICAL':
       return <CategoryListFeature {...{ item }} />;
+    case 'PRODUCT':
+      return <CategoryProductListFeature {...{ item }} />;
     case 'ORDERED_LIST':
       return <ProductListFeature {...{ item }} />;
     case 'TIMER_HORIZONTAL':

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { Picture, Stack } from './uiKit';
+import { colors } from '../assets/styles';
 const dimension = Dimensions.get('window');
 
 const PAGE_MARGIN = 40,
@@ -31,7 +32,7 @@ class BannerListFeature extends Component {
         keyExtractor={(item, index) => `${index}`}
         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         renderItem={({ item }) => (
-          <Stack radius={10} clip colorMedium>
+          <Stack radius={10} clip color={colors.gray2}>
             <Picture style={styles.banner} fill source={{ uri: item.image }} />
           </Stack>
         )}
